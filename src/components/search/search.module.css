@@ -1,0 +1,18 @@
+.search {
+  font-family: 'REM', sans-serif;
+  font-size: 16px;
+  background: #6F52F6;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  color: #A394E6;
+  width: 30%;
+}
+
+.search::placeholder {
+  color: #A394E6;
+}
+
+.search:focus {
+  outline: none;
+}

@@ -6,24 +6,3 @@
   padding: 12px 30px;
   border-radius: 10px;
 }
-
-.logo {
-  font-size: 24px;
-}
-
-.search {
-  background: #6F52F6;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  color: #A394E6;
-  width: 30%;
-}
-
-.search::placeholder {
-  color: #A394E6;
-}
-
-.search:focus {
-  outline: none;
-}
