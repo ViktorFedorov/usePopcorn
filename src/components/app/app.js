@@ -5,6 +5,7 @@ import styles from './app.module.css'
 import MovieList from '../movie-list/movie-list'
 import React from 'react'
 import WatchedSummary from '../watched-summary/watched-summary'
+import WatchedMovieList from '../watched-movie-list/watched-movie-list'
 
 const tempMovieData = [
   {
@@ -63,6 +64,7 @@ function App() {
         </ListBox>
         <ListBox>
           <WatchedSummary />
+          <WatchedMovieList />
         </ListBox>
       </Main>
     </div>

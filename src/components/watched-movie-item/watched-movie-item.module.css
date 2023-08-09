@@ -1,5 +1,6 @@
 .movie {
   display: flex;
+  align-items: center;
   border-bottom: 1px solid #292D30;
   padding: 15px 30px;
 }
@@ -17,11 +18,13 @@
 .title {
   font-weight: 400;
   font-size: 18px;
-  margin-top: 10px;
 }
 
-.year {
-  font-weight: 200;
-  font-size: 16px;
-  margin-top: 15px;
+.info {
+  display: flex;
+  margin-top: 20px;
+}
+
+.info > li {
+  margin-right: 30px;
 }
