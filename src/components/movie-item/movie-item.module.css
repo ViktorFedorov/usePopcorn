@@ -1,0 +1,23 @@
+.movie {
+  display: flex;
+  border-bottom: 1px solid #292D30;
+  padding: 15px 30px;
+}
+
+.poster {
+  display: block;
+  width: 50px;
+  margin-right: 25px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.year {
+  font-weight: 200;
+  font-size: 16px;
+  margin-top: 15px;
+}
