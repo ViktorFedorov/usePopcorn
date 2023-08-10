@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import WatchedSummary from '../watched-summary/watched-summary'
 import WatchedMovieList from '../watched-movie-list/watched-movie-list'
 import NumResults from '../num-results/num-results'
+import RatingScale from '../rating-scale/rating-scale'
 
 const tempMovieData = [
   {
@@ -73,6 +74,7 @@ function App() {
           <WatchedMovieList watched={watched} />
         </ListBox>
       </Main>
+      <RatingScale />
     </div>
   )
 }
