@@ -1,15 +1,14 @@
 import React from 'react'
 import styles from './nav-bar.module.css'
-import Search from '../search/search'
 import Logo from '../logo/logo'
-import NumResults from '../num-results/num-results'
+import Search from '../search/search'
 
-const NavBar = () => {
+const NavBar = ({ children }) => {
   return (
     <nav className={styles.nav}>
       <Logo />
       <Search />
-      <NumResults />
+      {children}
     </nav>
   )
 }

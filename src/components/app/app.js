@@ -3,9 +3,10 @@ import Main from '../main/main'
 import ListBox from '../list-box/list-box'
 import styles from './app.module.css'
 import MovieList from '../movie-list/movie-list'
-import React from 'react'
+import React, { useState } from 'react'
 import WatchedSummary from '../watched-summary/watched-summary'
 import WatchedMovieList from '../watched-movie-list/watched-movie-list'
+import NumResults from '../num-results/num-results'
 
 const tempMovieData = [
   {
@@ -55,16 +56,21 @@ const tempWatchedData = [
 ]
 
 function App() {
+  const [movies, setMovies] = useState(tempMovieData)
+  const [watched, setWatched] = useState(tempWatchedData)
+
   return (
     <div className={styles.app}>
-      <NavBar />
+      <NavBar>
+        <NumResults movies={movies} />
+      </NavBar>
       <Main>
         <ListBox>
-          <MovieList />
+          <MovieList movies={movies} />
         </ListBox>
         <ListBox>
-          <WatchedSummary />
-          <WatchedMovieList />
+          <WatchedSummary watched={watched} />
+          <WatchedMovieList watched={watched} />
         </ListBox>
       </Main>
     </div>

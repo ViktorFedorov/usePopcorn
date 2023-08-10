@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styles from './list-box.module.css'
-import MovieList from '../movie-list/movie-list'
 
 const ListBox = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true)
@@ -13,7 +12,7 @@ const ListBox = ({ children }) => {
       >
         {isOpen ? '-' : '+'}
       </button>
-      {children}
+      {isOpen && children}
     </div>
   )
 }
