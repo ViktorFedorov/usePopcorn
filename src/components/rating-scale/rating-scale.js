@@ -1,30 +1,24 @@
 import React, { useState } from 'react'
 import styles from './rating-scale.module.css'
 
-const stars = Array.from({ length: 10 })
-
-const RatingScale = () => {
+const RatingScale = ({ length = 10 }) => {
   const [rating, setRating] = useState(0)
-
-  const handleMouseOver = (e, index) => {
-    setRating(index)
-
-    e.target.classList.add(styles.active)
-  }
-
-  console.log(rating)
 
   return (
     <ul className={styles.scale}>
-      {stars.map((star, index) => (
-        <div
-          className={styles.star}
+      {Array.from({ length: length }).map((star, index) => (
+        <li
+          className={
+            rating < index ? styles.star : `${styles.star} ${styles.active}`
+          }
           key={index}
-          onMouseOver={(e) => handleMouseOver(e, index)}
+          onClick={() => setRating(index)}
+          onMouseOver={() => setRating(index)}
         >
           {' '}
-        </div>
+        </li>
       ))}
+      <li>{rating + 1}</li>
     </ul>
   )
 }

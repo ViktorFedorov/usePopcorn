@@ -9,17 +9,13 @@
 }
 
 .star {
+  background: url(../../images/star.svg) no-repeat center center;
+  background-size: 10px 10px;
   width: 30px;
   height: 30px;
-  border-radius: 50%;
-  border: 1px solid wheat;
   cursor: pointer;
 }
 
-/*.star:hover {*/
-/*  background-color: wheat;*/
-/*}*/
-
 .active {
-  background-color: wheat;
+  background-size: 30px 30px;
 }
