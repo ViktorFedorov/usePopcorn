@@ -6,13 +6,13 @@ const TextExpander = ({ text, wordsLimit }) => {
 
   const prepareText = open
     ? text
-    : text.split(' ').splice(0, wordsLimit).join(' ')
+    : text.split(' ').splice(0, wordsLimit).join(' ') + '...'
 
   return (
     <div className={styles.expander}>
       <p className={styles.text}>{prepareText}</p>
       <button onClick={() => setOpen((open) => !open)} className={styles.btn}>
-        {open ? 'Show less ...' : '... Show more'}
+        {open ? 'Show less' : 'Show more'}
       </button>
     </div>
   )
