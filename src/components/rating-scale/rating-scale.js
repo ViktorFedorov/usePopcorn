@@ -6,13 +6,13 @@ const RatingScale = ({ length = 10 }) => {
   const [tempRating, setTempRating] = useState(0)
 
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.rating}>{tempRating || rating || ''}</div>
       <ul className={styles.scale} onMouseLeave={() => setTempRating(0)}>
         {Array.from({ length: length }).map((star, index) => (
           <li
             className={
-              tempRating <= index
+              tempRating <= index && rating <= index
                 ? styles.star
                 : `${styles.star} ${styles.active}`
             }
@@ -24,6 +24,7 @@ const RatingScale = ({ length = 10 }) => {
           </li>
         ))}
       </ul>
+      {!!rating && <button className={styles.add}>+ Add to list</button>}
     </div>
   )
 }
