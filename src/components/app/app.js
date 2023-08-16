@@ -55,9 +55,15 @@ const tempWatchedData = [
   }
 ]
 
+const KEY = `79d4d714`
+
 function App() {
   const [movies, setMovies] = useState(tempMovieData)
   const [watched, setWatched] = useState(tempWatchedData)
+
+  fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=Inception`)
+    .then((data) => data.json())
+    .then(console.log)
 
   return (
     <div className={styles.app}>
