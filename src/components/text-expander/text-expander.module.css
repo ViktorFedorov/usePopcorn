@@ -1,0 +1,17 @@
+.expander {
+  margin-bottom: 20px;
+}
+
+.btn {
+  border: none;
+  background: transparent;
+  font-family: 'REM', sans-serif;
+  color: orangered;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.text {
+  display: inline;
+  margin-right: 10px ;
+}
