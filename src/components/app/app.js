@@ -7,8 +7,6 @@ import React, { useState } from 'react'
 import WatchedSummary from '../watched-summary/watched-summary'
 import WatchedMovieList from '../watched-movie-list/watched-movie-list'
 import NumResults from '../num-results/num-results'
-import RatingScale from '../rating-scale/rating-scale'
-import TextExpander from '../text-expander/text-expander'
 
 const tempMovieData = [
   {
@@ -75,20 +73,6 @@ function App() {
           <WatchedMovieList watched={watched} />
         </ListBox>
       </Main>
-      {/*<RatingScale />*/}
-      <TextExpander
-        text='Ситуация из реальной жизни. Мы пишем приложение для обмена сообщениями, и посетитель вводит имена тех, кому его отправить, через запятую: Вася, Петя, Маша. Но нам-то гораздо удобнее работать с массивом имён, чем с одной строкой. Как его получить?'
-        wordsLimit={7}
-      />
-
-      <TextExpander
-        text='Он принимает любое количество аргументов, которые могут быть как массивами, так и простыми значениями.
-
-В результате – новый массив, включающий в себя элементы из arr, затем arg1, arg2 и так далее.
-
-Если аргумент argN – массив, то копируются все его элементы. Иначе копируется сам аргумент.'
-        wordsLimit={4}
-      />
     </div>
   )
 }
