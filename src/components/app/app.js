@@ -3,36 +3,12 @@ import Main from '../main/main'
 import ListBox from '../list-box/list-box'
 import styles from './app.module.css'
 import MovieList from '../movie-list/movie-list'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import WatchedSummary from '../watched-summary/watched-summary'
 import WatchedMovieList from '../watched-movie-list/watched-movie-list'
 import NumResults from '../num-results/num-results'
-import RatingScale from '../rating-scale/rating-scale'
-import TextExpander from '../text-expander/text-expander'
-
-const tempMovieData = [
-  {
-    imdbID: 'tt1375666',
-    Title: 'Inception',
-    Year: '2010',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg'
-  },
-  {
-    imdbID: 'tt0133093',
-    Title: 'The Matrix',
-    Year: '1999',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg'
-  },
-  {
-    imdbID: 'tt6751668',
-    Title: 'Parasite',
-    Year: '2019',
-    Poster:
-      'https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg'
-  }
-]
+import Loader from '../loader/loader'
+import ErrorMessage from '../error-message/error-message'
 
 const tempWatchedData = [
   {
@@ -60,12 +36,41 @@ const tempWatchedData = [
 const KEY = `79d4d714`
 
 function App() {
-  const [movies, setMovies] = useState(tempMovieData)
+  const [movies, setMovies] = useState([])
   const [watched, setWatched] = useState(tempWatchedData)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=Inception`)
-    .then((data) => data.json())
-    .then(console.log)
+  const query = 'south'
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setIsLoading(true)
+        const res = await fetch(
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+        )
+
+        // console.log(res)
+
+        if (!res.ok)
+          throw new Error('Something went wrong with fetching movies')
+
+        const data = await res.json()
+
+        // console.log(data)
+
+        if (data.Response === 'False') throw new Error(data.Error)
+
+        setMovies(data.Search)
+      } catch (err) {
+        setError(err.message)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchMovies()
+  }, [])
 
   return (
     <div className={styles.app}>
@@ -74,27 +79,15 @@ function App() {
       </NavBar>
       <Main>
         <ListBox>
-          <MovieList movies={movies} />
+          {isLoading && <Loader />}
+          {error && <ErrorMessage message={error} />}
+          {!isLoading && !error && <MovieList movies={movies} />}
         </ListBox>
         <ListBox>
           <WatchedSummary watched={watched} />
           <WatchedMovieList watched={watched} />
         </ListBox>
       </Main>
-      {/*<RatingScale />*/}
-      <TextExpander
-        text='Ситуация из реальной жизни. Мы пишем приложение для обмена сообщениями, и посетитель вводит имена тех, кому его отправить, через запятую: Вася, Петя, Маша. Но нам-то гораздо удобнее работать с массивом имён, чем с одной строкой. Как его получить?'
-        wordsLimit={7}
-      />
-
-      <TextExpander
-        text='Он принимает любое количество аргументов, которые могут быть как массивами, так и простыми значениями.
-
-В результате – новый массив, включающий в себя элементы из arr, затем arg1, arg2 и так далее.
-
-Если аргумент argN – массив, то копируются все его элементы. Иначе копируется сам аргумент.'
-        wordsLimit={4}
-      />
     </div>
   )
 }
