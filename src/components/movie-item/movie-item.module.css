@@ -2,6 +2,11 @@
   display: flex;
   border-bottom: 1px solid #292D30;
   padding: 15px 30px;
+  cursor: pointer;
+}
+
+.active {
+  background-color: #293134;
 }
 
 .movie:hover {
