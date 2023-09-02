@@ -1,5 +1,5 @@
 .details {
-  margin-top: 50px;
+
 }
 
 .back {
@@ -17,6 +17,91 @@
   top: 10px;
   left: 10px;
   transition: all ease .2ms;
+}
+
+.container {
+  display: flex;
+  background-color: #373a3f;
+  border-radius: 10px 10px 0 0;
+}
+
+.poster {
+  width: 150px;
+  margin-right: 30px;
+  border-radius: 10px 0 0 0;
+}
+
+.info {
+  padding-top: 20px;
+}
+
+.info > span {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.dot {
+  display: inline-block;
+  margin: 0 10px 2px;
+  width: 5px;
+  height: 5px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.heading {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.genre {
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+.rating {
+  font-size: 14px;
+}
+
+
+.plot {
+  font-size: 14px;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.description {
+  padding: 40px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: #2A3333;
+  border-radius: 15px;
+  padding: 20px 0px 20px 20px;
+}
+
+.add {
+  font-family: 'REM', sans-serif;
+  cursor: pointer;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  background: #6F52F6;
+  margin-top: 10px;
+}
+
+.actors {
+  font-size: 14px;
+}
+
+.director {
+  font-size: 14px;
+  margin-top: 20px;
 }
 
 .back:hover {
