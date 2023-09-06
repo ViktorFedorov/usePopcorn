@@ -1,4 +1,5 @@
 .movie {
+  position: relative;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #292D30;
@@ -27,4 +28,24 @@
 
 .info > li {
   margin-right: 30px;
+}
+
+.remove {
+  font-family: 'REM', sans-serif;
+  width: 20px;
+  height: 20px;
+  background-color: tomato;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: 40%;
+  opacity: 0;
+  transition: opacity ease-in .1s;
+}
+
+.movie:hover .remove {
+  opacity: .7;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styles from './movie-item.module.css'
 
 const MovieItem = ({ movie, selectedID, onSelect }) => {

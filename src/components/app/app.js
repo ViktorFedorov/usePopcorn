@@ -66,6 +66,10 @@ function App() {
     setWatched((watched) => [...watched, movie])
   }
 
+  const handleDeleteWatched = (id) => {
+    setWatched((watched) => watched.filter((item) => item.imdbID !== id))
+  }
+
   return (
     <div className={styles.app}>
       <NavBar>
@@ -94,7 +98,10 @@ function App() {
           ) : (
             <>
               <WatchedSummary watched={watched} />
-              <WatchedMovieList watched={watched} />
+              <WatchedMovieList
+                watched={watched}
+                onDeleteWatched={handleDeleteWatched}
+              />
             </>
           )}
         </ListBox>

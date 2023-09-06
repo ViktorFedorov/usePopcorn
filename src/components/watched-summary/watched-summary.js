@@ -6,9 +6,13 @@ const average = (arr) => {
 }
 
 const WatchedSummary = ({ watched }) => {
-  const avgImdbRating = average(watched.map((item) => item.imdbRating))
-  const avgUserRating = average(watched.map((item) => item.userRating))
-  const avgUserRuntime = average(watched.map((item) => item.runtime))
+  const avgImdbRating = Math.ceil(
+    average(watched.map((item) => item.imdbRating))
+  ).toFixed(1)
+  const avgUserRating = Math.ceil(
+    average(watched.map((item) => item.userRating))
+  ).toFixed(1)
+  const avgUserRuntime = Math.ceil(average(watched.map((item) => item.runtime)))
 
   return (
     <div className={styles.summary}>

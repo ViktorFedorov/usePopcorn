@@ -18,8 +18,15 @@ const MovieDetails = ({ selectedID, onCloseMovie, onAddWatched }) => {
     imdbRating,
     Plot: plot,
     Actors: actors,
-    Director: director
+    Director: director,
+    imdbID
   } = movie
+
+  useEffect(() => {
+    if (!title) return
+    document.title = title
+    return () => (document.title = 'usePopcorn')
+  }, [title])
 
   useEffect(() => {
     setRating(0)
@@ -47,7 +54,8 @@ const MovieDetails = ({ selectedID, onCloseMovie, onAddWatched }) => {
       userRating: rating,
       poster,
       imdbRating,
-      runtime
+      runtime: Number(runtime.split(' ')[0]),
+      imdbID
     }
 
     onAddWatched(newWatchedMovie)

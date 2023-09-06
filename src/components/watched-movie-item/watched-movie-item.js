@@ -5,11 +5,13 @@ const WatchedMovieItem = ({
   title,
   poster,
   imdbRating,
+  imdbID,
   userRating,
-  runtime
+  runtime,
+  onDeleteWatched
 }) => {
   return (
-    <li className={styles.movie}>
+    <li className={styles.movie} key={imdbID}>
       <img className={styles.poster} src={poster} alt='' />
       <div>
         <h2 className={styles.title}>{title}</h2>
@@ -19,6 +21,9 @@ const WatchedMovieItem = ({
           <li>⏳ {runtime} min</li>
         </ul>
       </div>
+      <button className={styles.remove} onClick={() => onDeleteWatched(imdbID)}>
+        x
+      </button>
     </li>
   )
 }
