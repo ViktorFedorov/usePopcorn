@@ -70,6 +70,10 @@ function App() {
     return () => controller.abort()
   }, [query])
 
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([...watched]))
+  }, [watched])
+
   const handleSelect = (id) => setSelectedID(id === selectedID ? '' : id)
 
   const handleCloseMovie = () => {
