@@ -48,6 +48,14 @@ const MovieDetails = ({ selectedID, onCloseMovie, onAddWatched }) => {
     getMovie()
   }, [selectedID])
 
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === 'Escape') onCloseMovie()
+    }
+    document.addEventListener('keydown', handler)
+    return () => document.removeEventListener('keydown', handler)
+  }, [onCloseMovie])
+
   const handleAddWatched = () => {
     const newWatchedMovie = {
       title,

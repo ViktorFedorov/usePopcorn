@@ -7,6 +7,12 @@
   padding: 10px 15px;
   color: #A394E6;
   width: 30%;
+  transition: all ease-in .1s;
+}
+
+.search:focus {
+  transform: translateX(-1px) translateY(-1px);
+  box-shadow: 16px 16px 17px 7px rgba(0, 100, 178, 0.24);
 }
 
 .search::placeholder {

@@ -23,12 +23,17 @@ function App() {
   const [selectedID, setSelectedID] = useState('')
 
   useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
+
     const fetchMovies = async () => {
       try {
         setIsLoading(true)
         setError('')
+
         const res = await fetch(
-          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+          `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+          { signal }
         )
 
         if (!res.ok)
@@ -39,8 +44,9 @@ function App() {
         if (data.Response === 'False') throw new Error(data.Error)
 
         setMovies(data.Search)
+        setError('')
       } catch (err) {
-        setError(err.message)
+        if (err.name !== 'AbortError') setError(err.message)
       } finally {
         setIsLoading(false)
       }
@@ -52,7 +58,16 @@ function App() {
       return
     }
 
+    // закроем детали фильма при вводе новго поискового запроса
+    handleCloseMovie()
+
     fetchMovies()
+
+    // при вводе каждого симвла в поисковом запросе - компонент перерисовывается
+    // и для того чтобы не было утечек памяти надо отменять предыдущий запрос,
+    // если он не успел выполнится, при вводе нового символа
+    // при размонтировании компонента
+    return () => controller.abort()
   }, [query])
 
   const handleSelect = (id) => setSelectedID(id === selectedID ? '' : id)
