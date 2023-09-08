@@ -71,6 +71,11 @@ function App() {
   }, [query])
 
   useEffect(() => {
+    const watched = localStorage.getItem('watched')
+    setWatched(JSON.parse(watched))
+  }, [])
+
+  useEffect(() => {
     localStorage.setItem('watched', JSON.stringify([...watched]))
   }, [watched])
 
