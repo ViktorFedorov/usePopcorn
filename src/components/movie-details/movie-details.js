@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { KEY } from '../app/app'
+import { KEY } from '../../hooks/useMovies'
 import styles from './movie-details.module.css'
 import RatingScale from '../rating-scale/rating-scale'
 import Loader from '../loader/loader'
+import { useKey } from '../../hooks/useKey'
 
 const MovieDetails = ({ selectedID, onCloseMovie, onAddWatched }) => {
   const [movie, setMovie] = useState('')
@@ -48,13 +49,7 @@ const MovieDetails = ({ selectedID, onCloseMovie, onAddWatched }) => {
     getMovie()
   }, [selectedID])
 
-  useEffect(() => {
-    const handler = (e) => {
-      if (e.key === 'Escape') onCloseMovie()
-    }
-    document.addEventListener('keydown', handler)
-    return () => document.removeEventListener('keydown', handler)
-  }, [onCloseMovie])
+  useKey('Escape', onCloseMovie)
 
   const handleAddWatched = () => {
     const newWatchedMovie = {
